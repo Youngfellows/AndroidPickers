@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+ext {
+    isLibrary = false
+}
+
+android {
+    buildTypes {
+        release {
+            //是否zip优化
+            zipAlignEnabled true
+//            v1SigningEnabled false
+//            v2SigningEnabled false
+            //是否移除无用的资源，造成：specified for property 'resourceFile' does not exist.
+            //shrinkResources true
+            //是否混淆
+            minifyEnabled true
+            //混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'com.alibaba:fastjson:1.2.48'
+    implementation 'com.github.florent37:viewanimator:1.1.0'
+    //implementation 'com.tencent:mmkv:1.2.7'
+    implementation 'com.tencent:mmkv-static:1.2.7'
+    implementation project(path:':android-pickers')
+}
